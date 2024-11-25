@@ -1,41 +1,10 @@
-2024-11-24 16:04:26 - INFO - Cliente conectado desde ('127.0.0.1', 38068)
-2024-11-24 16:04:28 - INFO - ('127.0.0.1', 38068) dice: Server: K ha entrado al chat
-2024-11-24 16:17:05 - INFO - ('127.0.0.1', 38068) ha cerrado la conexión
-2024-11-24 16:17:09 - INFO - Cliente conectado desde ('127.0.0.1', 45878)
-2024-11-24 16:17:11 - INFO - ('127.0.0.1', 45878) dice: Server: K ha entrado al chat
-2024-11-24 16:47:39 - INFO - Servidor de historial iniciado en 127.0.0.1:5002
-2024-11-24 16:47:51 - INFO - Cliente conectado desde ('127.0.0.1', 57924)
-2024-11-24 16:50:11 - INFO - Servidor de historial iniciado en 127.0.0.1:5002
-2024-11-24 16:50:20 - INFO - Cliente conectado: ('127.0.0.1', 52504)
-2024-11-24 16:50:25 - INFO - Cliente conectado desde ('127.0.0.1', 49600)
-2024-11-24 16:50:27 - INFO - Mensaje guardado en chat general: 127.0.0.1: Server: k ha entrado al chat
-2024-11-24 16:50:42 - INFO - Mensaje guardado en chat general: 127.0.0.1: Server: k ha dejado el chat
-2024-11-24 16:50:57 - INFO - Error manejando cliente ('127.0.0.1', 52504): [Errno 104] Connection reset by peer
-2024-11-24 16:50:57 - INFO - Cliente desconectado: ('127.0.0.1', 52504)
-2024-11-24 16:51:13 - INFO - Servidor de historial iniciado en 127.0.0.1:5002
-2024-11-24 16:51:17 - INFO - Cliente conectado: ('127.0.0.1', 43278)
-2024-11-24 16:51:25 - INFO - Cliente conectado desde ('127.0.0.1', 54176)
-2024-11-24 16:51:29 - INFO - Mensaje guardado en chat general: 127.0.0.1: Server: k ha entrado al chat
-2024-11-24 17:03:36 - INFO - Cliente conectado desde ('127.0.0.1', 38540)
-2024-11-24 17:07:01 - INFO - Cliente conectado desde ('127.0.0.1', 52756)
-2024-11-24 17:07:51 - INFO - Cliente conectado desde ('127.0.0.1', 54946)
-2024-11-24 17:09:43 - INFO - Cliente conectado desde ('127.0.0.1', 56292)
-2024-11-24 17:11:20 - INFO - Cliente conectado desde ('127.0.0.1', 33174)
-2024-11-24 17:12:03 - INFO - Cliente conectado desde ('127.0.0.1', 33060)
-2024-11-24 17:12:43 - INFO - Cliente conectado desde ('127.0.0.1', 56518)
-2024-11-24 17:17:14 - INFO - Cliente conectado desde ('127.0.0.1', 39252)
-2024-11-24 17:18:01 - INFO - Cliente conectado desde ('127.0.0.1', 58356)
-2024-11-24 17:21:23 - INFO - Cliente conectado desde ('127.0.0.1', 58190)
-2024-11-24 17:21:57 - INFO - Cliente conectado desde ('127.0.0.1', 58022)
-2024-11-24 17:29:21 - INFO - Cliente conectado desde ('127.0.0.1', 45840)
-2024-11-24 17:29:48 - INFO - Cliente conectado desde ('127.0.0.1', 42568)
-2024-11-24 17:30:05 - INFO - Cliente conectado desde ('127.0.0.1', 32914)
-2024-11-24 17:40:44 - INFO - Cliente conectado desde ('127.0.0.1', 34128)
-2024-11-24 17:46:04 - INFO - Cliente conectado desde ('127.0.0.1', 58782)
-2024-11-24 17:50:39 - INFO - Cliente conectado desde ('127.0.0.1', 59960)
-2024-11-24 17:56:36 - INFO - Cliente conectado desde ('127.0.0.1', 49772)
-2024-11-24 18:00:00 - INFO - Cliente conectado desde ('127.0.0.1', 50492)
-2024-11-24 18:02:05 - INFO - Cliente conectado desde ('127.0.0.1', 42146)
-2024-11-24 18:02:22 - INFO - Cliente conectado desde ('127.0.0.1', 50436)
-2024-11-24 18:21:38 - INFO - Servidor de historial iniciado en 127.0.0.1:5002
-2024-11-24 18:21:56 - INFO - Servidor de historial iniciado en 127.0.0.1:5002
+2024-11-25 12:51:44 - INFO - Servidor de historial iniciado en 127.0.0.1:5002
+2024-11-25 12:52:10 - INFO - Cliente conectado desde ('127.0.0.1', 60400)
+2024-11-25 12:54:29 - INFO - Servidor de historial iniciado en 127.0.0.1:5002
+2024-11-25 12:55:14 - INFO - Cliente conectado: ('127.0.0.1', 45880)
+2024-11-25 12:55:19 - INFO - Cliente conectado desde ('127.0.0.1', 45692)
+2024-11-25 12:55:21 - INFO - Mensaje guardado en chat general: 127.0.0.1: Server: l ha entrado al chat
+2024-11-25 12:55:27 - INFO - Mensaje guardado en chat general: 127.0.0.1: l: hola
+2024-11-25 12:57:03 - INFO - Mensaje guardado en chat general: 127.0.0.1: l: k
+2024-11-25 12:57:06 - INFO - Mensaje guardado en chat general: 127.0.0.1: l: QUIR
+2024-11-25 12:57:09 - INFO - Mensaje guardado en chat general: 127.0.0.1: Server: l ha dejado el chat

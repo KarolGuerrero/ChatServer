@@ -94,15 +94,16 @@ class Client:
 
 
 def main(host, port):
-   
+    # Configuración del cliente (no cambió)
     client = Client(host, port)
     receive = client.start()
 
     # Ventana principal
     window = tk.Tk()
     window.title("ChatRoom")
-    window.configure(bg="#eae6d9") 
+    window.configure(bg="#eae6d9")  # Fondo tipo WhatsApp
 
+    # Fuente estilizada
     custom_font = font.Font(family="Segoe UI", size=14)
 
     # Encabezado
@@ -110,7 +111,7 @@ def main(host, port):
         master=window,
         text="ChatRoom",
         font=(custom_font, 16, "bold"),
-        bg="#128C7E", 
+        bg="#128C7E",  # Verde WhatsApp
         fg="white",
         pady=10,
     )
@@ -125,7 +126,7 @@ def main(host, port):
         bg="#ffffff",
         fg="#000000",
         font=custom_font,
-        selectbackground="#25D366",  
+        selectbackground="#25D366",  # Color verde al seleccionar
         selectforeground="white",
         borderwidth=0,
         relief="flat",

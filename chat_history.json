@@ -2,15 +2,23 @@
     "general": [
         {
             "user": "127.0.0.1",
-            "message": "Server: k ha entrado al chat"
+            "message": "Server: l ha entrado al chat"
         },
         {
             "user": "127.0.0.1",
-            "message": "Server: k ha dejado el chat"
+            "message": "l: hola"
         },
         {
             "user": "127.0.0.1",
-            "message": "Server: k ha entrado al chat"
+            "message": "l: k"
+        },
+        {
+            "user": "127.0.0.1",
+            "message": "l: QUIR"
+        },
+        {
+            "user": "127.0.0.1",
+            "message": "Server: l ha dejado el chat"
         }
     ]
 }

@@ -10,17 +10,18 @@ HISTORY_HOST = '127.0.0.1'
 HISTORY_PORT = 5002
 
 # Configuración del microservicio de notificaciones
-NOTIFICATIONS_HOST = '127.0.0.1'
-NOTIFICATIONS_PORT = 5001
+NOTIFICATIONS_HOST = '127.0.0.1'  # Dirección del microservicio
+NOTIFICATIONS_PORT = 5001         # Puerto del microservicio
 
 class Server(threading.Thread):
+
     def __init__(self, host, port):
         super().__init__()
         self.connections = []
         self.host = host
         self.port = port
-        self.history_socket = self.connect_to_history_service()
         self.notification_socket = self.connect_to_notifications_service()
+        self.history_socket = self.connect_to_history_service()
 
     def connect_to_history_service(self):
         """
@@ -37,7 +38,7 @@ class Server(threading.Thread):
 
     def connect_to_notifications_service(self):
         """
-        Establece conexión con el microservicio de notificaciones.
+        Establecer conexión con el microservicio de notificaciones.
         """
         try:
             notification_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -47,7 +48,7 @@ class Server(threading.Thread):
         except Exception as e:
             print(f"Error al conectar con el microservicio de notificaciones: {e}")
             return None
-
+        
     def send_to_history(self, chat_id, user, message):
         """
         Enviar mensaje al microservicio de historial para su almacenamiento.
@@ -66,7 +67,7 @@ class Server(threading.Thread):
 
     def send_notification(self, event_type, user, message=None):
         """
-        Enviar notificación al microservicio de notificaciones.
+        Enviar notificación al microservicio.
         """
         if self.notification_socket:
             try:
@@ -83,13 +84,20 @@ class Server(threading.Thread):
         print("Escuchando en", sock.getsockname())
 
         while True:
-            sc, sockname = sock.accept()
-            log_info(f"Cliente conectado desde {sc.getpeername()}")
-            print(f"Aceptando una nueva conexión desde {sc.getpeername()} a {sc.getsockname()}")
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            sock.bind((self.host, self.port))
+            sock.listen(1)
+            print("Escuchando en", sock.getsockname())
 
-            server_socket = ServerSocket(sc, sockname, self)
-            server_socket.start()
-            self.connections.append(server_socket)
+            while True:
+                sc, sockname = sock.accept()
+                log_info(f"Cliente conectado desde {sc.getpeername()}")
+                print(f"Aceptando una nueva conexión desde {sc.getpeername()} a {sc.getsockname()}")
+
+                server_socket = ServerSocket(sc, sockname, self)
+                server_socket.start()
+                self.connections.append(server_socket)
 
     def broadcast(self, message, source):
         for connection in self.connections:
@@ -102,7 +110,9 @@ class Server(threading.Thread):
         self.send_notification(event_type="disconnect", user=str(connection.sockname[0]))
         self.connections.remove(connection)
 
+
 class ServerSocket(threading.Thread):
+
     def __init__(self, sc, sockname, server):
         super().__init__()
         self.sc = sc
@@ -112,30 +122,28 @@ class ServerSocket(threading.Thread):
     def run(self):
         while True:
             try:
-                message = self.sc.recv(1024).decode('utf-8')
-                if not message:
-                    break
+                message = self.sc.recv(1024).decode('ascii')
+                if message:
+                    print(f"{self.sockname} dice: {message}")
+                    self.server.send_to_history(chat_id="general", user=str(self.sockname[0]), message=message)
+                    
 
-                # Procesar mensaje y enviarlo al historial
-                print(f"{self.sockname} dice: {message}")
-                self.server.send_to_history(chat_id="general", user=str(self.sockname[0]), message=message)
+                    # Enviar notificación de mensaje
+                    self.server.send_notification(event_type="message", user=str(self.sockname[0]), message=message)
 
-                # Reenviar mensaje a otros clientes
-                self.server.broadcast(message, self.sockname)
-
-            except Exception as e:
-                print(f"Error con cliente {self.sockname}: {e}")
-                break
-
-        # Desconectar cliente
-        self.sc.close()
-        self.server.remove_connection(self)
+                    # Transmitir el mensaje a otros clientes
+                    self.server.broadcast(message, self.sockname)
+                else:
+                    raise ConnectionResetError()
+            except (ConnectionResetError, OSError):
+                print(f"{self.sockname} ha cerrado la conexión")
+                self.sc.close()
+                self.server.remove_connection(self)
+                return
 
     def send(self, message):
-        """
-        Enviar mensaje a este cliente.
-        """
-        self.sc.sendall(message.encode('utf-8'))
+        self.sc.sendall(message.encode('ascii'))
+
 
 def exit_handler(server):
     """
@@ -149,6 +157,7 @@ def exit_handler(server):
                 connection.sc.close()
             print("Apagando el servidor...")
             os._exit(0)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Chatroom Server")
